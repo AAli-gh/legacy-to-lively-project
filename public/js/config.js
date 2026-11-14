@@ -16,10 +16,10 @@ window.SITE = {
   available: true,                               // نمایش نشان «آماده همکاری»
 
   /* ---------- لینک‌ها (Placeholder — جایگزین کنید) ---------- */
-  email: "your-email@example.com",
+  email: "aligholami8118@gmail.com",
   github: "https://github.com/AAli-gh",
-  linkedin: "https://www.linkedin.com/in/your-username",
-  telegram: "https://t.me/your-username",
+  linkedin: "https://www.linkedin.com/in/ali-gholami-7314a0254",
+  telegram: "https://t.me/Ali_Ali0_0",
 
   /* ---------- دیپلوی ---------- */
   siteUrl: "https://aali-gh.github.io/",
