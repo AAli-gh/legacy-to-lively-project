@@ -1,0 +1,4 @@
+[{"capability":"static pages (home, about, projects, articles, resume, contact, 404)","source":"html/js/css","outcome":"migrate","status":"verified","next_action":"none"},
+{"capability":"3D tour (three.js prebuilt)","source":"3d/dist","outcome":"migrate","status":"verified","next_action":"none"},
+{"capability":"2042 game demo","source":"demos/2042-game","outcome":"migrate","status":"verified","next_action":"none"},
+{"capability":"database/auth/secrets/endpoints","source":"none","outcome":"absent","status":"verified","next_action":"none"}]
