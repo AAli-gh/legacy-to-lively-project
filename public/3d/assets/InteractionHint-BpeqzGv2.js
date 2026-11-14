@@ -1,0 +1,1 @@
+class i{constructor(){this.element=document.querySelector("#interaction-hint")}show(t,e=""){this.element.textContent=t==="article"?`کلیک برای مطالعه مقاله${e?`: ${e}`:""}`:`کلیک برای مشاهده پروژه${e?`: ${e}`:""}`,this.element.hidden=!1}hide(){this.element.hidden=!0}}export{i as InteractionHint};

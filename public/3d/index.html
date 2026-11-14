@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080b10" />
+    <meta name="description" content="پورتفولیوی سه‌بعدی علی؛ پروژه‌ها، مقاله‌ها، رزومه و راه‌های ارتباطی در یک فضای دیجیتال تعاملی." />
+    <link rel="canonical" href="https://aali-gh.github.io/3d/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="گالری دیجیتال | علی" />
+    <meta property="og:description" content="پروژه‌ها، مقاله‌ها، رزومه و راه‌های ارتباطی در یک فضای دیجیتال تعاملی." />
+    <meta property="og:url" content="https://aali-gh.github.io/3d/" />
+    <title>گالری دیجیتال | علی</title>
+    <script src="../js/config.js"></script>
+    <script type="module" crossorigin src="/3d/assets/index-Da1E8SKD.js"></script>
+    <link rel="modulepreload" crossorigin href="/3d/assets/three.core-BbHYHnPq.js">
+    <link rel="modulepreload" crossorigin href="/3d/assets/Stations-B_1IdboV.js">
+    <link rel="stylesheet" crossorigin href="/3d/assets/index-DG0q995b.css">
+  </head>
+  <body>
+    <main class="experience" id="experience">
+      <canvas class="scene-canvas" id="scene-canvas" aria-label="نمای سه‌بعدی لابی گالری هوش مصنوعی"></canvas>
+      <div class="project-label-layer" id="project-labels" aria-label="پروژه‌های نمایشگاه" hidden></div>
+      <div class="project-label-layer article-label-layer" id="article-labels" aria-label="مقالات کتابخانه" hidden></div>
+
+      <header class="topbar" aria-label="نوار ابزار گالری">
+        <a class="brand" href="../index.html" aria-label="بازگشت به پورتفولیوی علی">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span class="brand-name" data-site-name-en>ALI</span>
+        </a>
+        <div class="topbar-meta"><span class="status-dot"></span><span>فضای دیجیتال</span></div>
+        <div class="mode-switch" role="group" aria-label="حالت ناوبری">
+          <button type="button" data-nav-mode="guided" aria-pressed="true">Guided Tour</button>
+          <button type="button" data-nav-mode="explore" aria-pressed="false">Explore</button>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="بازکردن ناوبری" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span></button>
+        <nav class="primary-nav" id="primary-nav" aria-label="ایستگاه‌های Portfolio">
+          <button type="button" data-station-nav="projects">پروژه‌ها</button>
+          <button type="button" data-station-nav="articles">مقالات</button>
+          <button type="button" data-station-nav="resume">رزومه</button>
+          <button type="button" data-station-nav="contact">تماس</button>
+        </nav>
+      </header>
+
+      <section class="welcome" id="welcome" aria-labelledby="hero-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span>گالری تعاملی · ۲۰۲۶</p>
+        <h1 id="hero-title"><span data-site-role>AI Engineer &amp; Python Developer</span></h1>
+        <p class="welcome-copy">به فضای دیجیتال من خوش آمدید</p>
+        <p class="welcome-subcopy">اینجا ایده‌ها، داده‌ها و تجربه‌های دیجیتال در یک مسیر گرد هم می‌آیند.</p>
+        <button class="enter-button" id="enter-button" type="button">
+          <span>ورود به نمایشگاه</span>
+          <span class="button-arrow" aria-hidden="true">←</span>
+        </button>
+        <p class="hint"><span class="hint-key" aria-hidden="true">↗</span> تجربه‌ی هدایت‌شده · بدون نیاز به کنترل</p>
+        <p class="mobile-mode-note" id="mobile-mode-note">نسخه موبایل از Guided Tour استفاده می‌کند.</p>
+      </section>
+
+      <section class="tour-controls" id="tour-controls" aria-label="کنترل تور" hidden>
+        <button id="tour-previous" type="button" aria-label="ایستگاه قبلی">‹ قبلی</button>
+        <span id="station-progress" aria-live="polite">02 / 05</span>
+        <button id="tour-next" type="button" aria-label="ایستگاه بعدی">بعدی ›</button>
+      </section>
+      <div class="station-title" id="station-title" aria-live="polite" aria-atomic="true"><span data-station-title-kicker></span><strong data-station-title-text></strong></div>
+      <div class="mode-indicator" id="mode-indicator">GUIDED TOUR</div>
+      <button class="explore-exit" id="explore-exit" type="button" hidden>خروج از کاوش <kbd>ESC</kbd></button>
+      <div class="crosshair" id="crosshair" aria-hidden="true" hidden></div>
+      <div class="interaction-hint" id="interaction-hint" role="status" aria-live="polite" hidden></div>
+      <p class="mode-message" id="mode-message" role="status" hidden></p>
+
+      <section class="explore-prompt" id="explore-prompt" role="dialog" aria-modal="true" aria-labelledby="explore-prompt-title" hidden>
+        <p class="panel-kicker">FREE EXPLORE</p>
+        <h2 data-explore-title id="explore-prompt-title">کاوش در Portfolio</h2>
+        <p data-explore-copy></p>
+        <div class="explore-keys" aria-label="راهنمای کنترل‌ها"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>حرکت</span><span>Mouse · نگاه</span><span>Click · تعامل</span><span>ESC · خروج</span></div>
+        <p class="explore-shortcuts">کلیدهای ۱ تا ۴: پرش به ایستگاه‌ها</p>
+        <p class="explore-error" data-explore-error role="alert" hidden>Pointer Lock فعال نشد. دوباره تلاش کنید یا Guided Tour را انتخاب کنید.</p>
+        <div class="explore-actions"><button class="enter-button" type="button" data-explore-start>شروع کاوش</button><button class="explore-cancel" type="button" data-explore-cancel>بازگشت به Guided Tour</button></div>
+      </section>
+
+      <section class="station-panel resume-panel" id="resume-panel" aria-labelledby="resume-name" hidden>
+        <button class="room-close" type="button" data-room-close aria-label="بستن پنل رزومه" hidden>×</button>
+        <p class="panel-kicker">PROFESSIONAL PROFILE</p>
+        <h2 id="resume-name" data-resume-name></h2>
+        <p class="panel-role" data-resume-role></p>
+        <p class="panel-summary" data-resume-summary></p>
+        <ul class="profile-skills" data-resume-skills aria-label="مهارت‌ها"></ul>
+        <div class="resume-detail" data-resume-detail></div>
+        <a class="panel-cta" data-resume-link href="../resume.html">مشاهده رزومه <span aria-hidden="true">←</span></a>
+      </section>
+      <section class="station-panel contact-panel" id="contact-panel-ui" aria-labelledby="contact-heading" hidden>
+        <button class="room-close" type="button" data-room-close aria-label="بستن پنل تماس" hidden>×</button>
+        <p class="panel-kicker">CONTACT</p>
+        <h2 id="contact-heading">ارتباط با من</h2>
+        <p class="panel-summary">برای همکاری و گفتگو از راه‌های زیر در دسترس هستم.</p>
+        <div class="contact-links" data-contact-links></div>
+        <p class="panel-summary" data-contact-empty hidden>اطلاعات تماس در حال تکمیل است.</p>
+      </section>
+
+      <footer class="bottom-bar">
+        <a class="back-link" id="back-link" href="../index.html"><span aria-hidden="true">↙</span> بازگشت به Portfolio</a>
+        <span class="scene-label" id="scene-label">01 <i></i> LOBBY</span>
+      </footer>
+
+      <div class="loading" id="loading" role="status"><span class="loading-mark"></span><span>در حال آماده‌سازی فضای شخصی...</span></div>
+
+      <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-card-title" aria-describedby="project-card-description">
+        <article class="project-card">
+          <button class="project-close" type="button" data-project-close aria-label="بستن جزئیات پروژه">×</button>
+          <div class="project-card-image">
+            <img data-project-image alt="" loading="lazy" />
+            <div class="project-card-placeholder" data-project-image-fallback hidden aria-hidden="true">
+              <span class="placeholder-orbit"></span><span class="placeholder-line"></span><span class="placeholder-label">PROJECT / PORTFOLIO</span>
+            </div>
+          </div>
+          <div class="project-card-content">
+            <p class="project-card-kicker">SELECTED PROJECT <span></span></p>
+            <h2 id="project-card-title" data-project-title></h2>
+            <p id="project-card-description" data-project-description></p>
+            <ul class="project-tags" data-project-tags aria-label="فناوری‌های استفاده‌شده"></ul>
+            <a class="project-card-link" data-project-link href="../projects.html">
+              <span>مشاهده پروژه</span><span aria-hidden="true">←</span>
+            </a>
+          </div>
+        </article>
+      </dialog>
+
+      <dialog class="project-dialog article-dialog" id="article-dialog" aria-labelledby="article-title" aria-describedby="article-summary">
+        <article class="project-card article-card-content">
+          <button class="project-close" type="button" data-article-close aria-label="بستن مقاله">×</button>
+          <div class="project-card-image article-image-wrap">
+            <img data-article-image alt="" loading="lazy" />
+            <div class="project-card-placeholder" data-article-fallback aria-hidden="true"><span class="placeholder-orbit"></span><span class="placeholder-line"></span><span class="placeholder-label">ARTICLE / LIBRARY</span></div>
+          </div>
+          <div class="project-card-content">
+            <p class="project-card-kicker">ARTICLE LIBRARY <span></span></p>
+            <p class="article-meta"><span data-article-category></span><time data-article-date hidden></time></p>
+            <h2 id="article-title" data-article-title></h2>
+            <p id="article-summary" data-article-summary></p>
+            <a class="project-card-link" data-article-link href="../articles.html"><span>مطالعه مقاله</span><span aria-hidden="true">←</span></a>
+          </div>
+        </article>
+      </dialog>
+
+      <section class="fallback" id="fallback" hidden aria-labelledby="fallback-title">
+        <div class="fallback-mark" aria-hidden="true">A</div>
+        <p class="eyebrow">گالری دیجیتال</p>
+        <h1 id="fallback-title">نسخه سه‌بعدی روی این دستگاه قابل اجرا نیست.</h1>
+        <p>برای دیدن Portfolio از نسخه‌ی معمولی استفاده کنید.</p>
+        <a class="enter-button fallback-link" href="../index.html">ورود به Portfolio معمولی <span class="button-arrow" aria-hidden="true">←</span></a>
+      </section>
+    </main>
+  </body>
+</html>
